@@ -1,35 +1,7 @@
 # Sito-per-vestiti-personalizate-
 🌱Crediamo nella moda sostenibile e creativa. Ogni capo viene prodotto solo dopo l’ordine, per evitare sprechi e offrirti un prodotto davvero personalizzato, fatto con cura e passione.🌱
-<!DOCTYPE html>
-<html lang="it">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Il tuo stile personalizzato | MyWear</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <header>
-    <h1>👕 MyWear</h1>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="prodotto.html">Personalizza</a>
-      <a href="#">Chi siamo</a>
-    </nav>
-  </header>
 
-  <main class="hero">
-    <h2>Crea il tuo stile unico</h2>
-    <p>Su <strong>MyWear</strong> puoi creare vestiti personalizzati in pochi click: scegli colore, taglia e aggiungi il tuo testo o logo.</p>
-    <a href="prodotto.html" class="btn">Inizia ora</a>
-  </main>
-
-  <footer>
-    <p>© 2025 MyWear – Moda personalizzata con passione</p>
-  </footer>
-</body>
-</html>
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="it">
 <head>
   <meta charset="UTF-8">
@@ -51,11 +23,19 @@
   <h1>Personalizza la tua T-shirt</h1>
   <div class="product-container">
     <div class="image">
-      <img id="productImage" src="tshirt-base.jpg" alt="T-shirt personalizzabile" style="max-width:100%;">
+      <!-- Maglietta bianca di default -->
+      <img id="productImage" 
+           src="https://upload.wikimedia.org/wikipedia/commons/2/24/White_Tshirt.jpg" 
+           alt="T-shirt bianca personalizzabile" 
+           style="max-width:100%; border:1px solid #ccc; border-radius:10px;">
     </div>
     <div class="customizer">
       <div class="preview">
-        <img id="previewImage" src="tshirt-base.jpg" alt="Anteprima" style="max-width:100%;">
+        <!-- Anteprima iniziale -->
+        <img id="previewImage" 
+             src="https://upload.wikimedia.org/wikipedia/commons/2/24/White_Tshirt.jpg" 
+             alt="Anteprima maglietta bianca" 
+             style="max-width:100%; border-radius:10px;">
       </div>
       <form id="customForm">
         <label for="color">Colore:</label>
@@ -86,11 +66,19 @@
     function updatePreview(){
       const color = document.getElementById('color').value;
       const preview = document.getElementById('previewImage');
-      // Cambia immagine in base al colore (esempio semplice)
-      preview.src = 'tshirt-' + color + '.jpg';
       const text = document.getElementById('text').value;
+
+      // Cambia immagine in base al colore selezionato
+      if(color === 'bianco'){
+        preview.src = 'https://upload.wikimedia.org/wikipedia/commons/2/24/White_Tshirt.jpg';
+      } else if(color === 'nero'){
+        preview.src = 'https://upload.wikimedia.org/wikipedia/commons/8/88/Black_Tshirt.jpg';
+      } else if(color === 'rosso'){
+        preview.src = 'https://upload.wikimedia.org/wikipedia/commons/4/4d/Red_Tshirt.jpg';
+      }
+
+      // Aggiorna descrizione (puoi migliorarlo con overlay o canvas)
       if(text){
-        // per semplicità, aggiungo testo come overlay (meglio usare canvas)
         preview.alt = 'T-shirt ' + color + ' con testo: ' + text;
       } else {
         preview.alt = 'T-shirt ' + color;
@@ -100,7 +88,6 @@
     document.getElementById('customForm').onsubmit = function(e){
       e.preventDefault();
       alert('Prodotto aggiunto al carrello con le opzioni selezionate!');
-      // Qui invii al backend: colore, taglia, testo, prezzo, etc.
     }
   </script>
 </body>
